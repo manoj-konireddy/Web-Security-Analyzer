@@ -222,7 +222,34 @@
 
         <h2>🍪 Cookie Analysis</h2>
 
-        <p>Coming Soon...</p>
+        <table>
+
+            <tr>
+                <td>Total Cookies</td>
+                <td>{{ result.cookies.total }}</td>
+            </tr>
+
+            <tr>
+                <td>Secure Cookies</td>
+                <td>{{ result.cookies.secure }}</td>
+            </tr>
+
+            <tr>
+                <td>HttpOnly Cookies</td>
+                <td>{{ result.cookies.httponly }}</td>
+            </tr>
+
+            <tr>
+                <td>SameSite Cookies</td>
+                <td>{{ result.cookies.samesite }}</td>
+            </tr>
+
+            <tr>
+                <td>Session Cookies</td>
+                <td>{{ result.cookies.session }}</td>
+            </tr>
+
+        </table>
 
     </div>
 

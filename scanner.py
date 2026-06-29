@@ -1,6 +1,7 @@
 from modules.website_info import get_website_info
 from modules.security_headers import check_security_headers
 from modules.ssl_checker import check_ssl
+from modules.cookie_analyzer import analyze_cookies
 
 
 def start_scan(url):
@@ -18,5 +19,8 @@ def start_scan(url):
         )
 
         result["ssl"] = check_ssl(url)
+        result["cookies"] = analyze_cookies(
+            website["cookies"]
+        )
 
     return result

@@ -20,15 +20,36 @@ def get_website_info(url):
         )
 
         return {
+
             "reachable": True,
+
             "url": response.url,
+
             "status_code": response.status_code,
+
             "response_time": response_time,
-            "server": response.headers.get("Server", "Not Available"),
-            "content_type": response.headers.get("Content-Type", "Unknown"),
-            "powered_by": response.headers.get("X-Powered-By", "Not Disclosed"),
+
+            "server": response.headers.get(
+                "Server",
+                "Not Available"
+            ),
+
+            "content_type": response.headers.get(
+                "Content-Type",
+                "Unknown"
+            ),
+
+            "powered_by": response.headers.get(
+                "X-Powered-By",
+                "Not Disclosed"
+            ),
+
             "redirected": len(response.history) > 0,
-            "headers": response.headers
+
+            "headers": response.headers,
+
+            "cookies": response.cookies
+
         }
 
     except requests.exceptions.RequestException as error:
