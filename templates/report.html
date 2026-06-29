@@ -313,7 +313,57 @@
 
         <h2>🤖 robots.txt</h2>
 
-        <p>Coming Soon...</p>
+        <table>
+
+            <tr>
+
+                <td>robots.txt Found</td>
+
+                <td>
+
+                    {% if result.robots.found %}
+
+                        <span class="status success">
+                            ✔ Found
+                        </span>
+
+                    {% else %}
+
+                        <span class="status danger">
+                            ✖ Not Found
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>URL</td>
+
+                <td>{{ result.robots.url }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Status Code</td>
+
+                <td>{{ result.robots.status_code }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Total Rules</td>
+
+                <td>{{ result.robots.rules }}</td>
+
+            </tr>
+
+        </table>
 
     </div>
 

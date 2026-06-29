@@ -3,6 +3,7 @@ from modules.security_headers import check_security_headers
 from modules.ssl_checker import check_ssl
 from modules.cookie_analyzer import analyze_cookies
 from modules.http_methods import check_http_methods
+from modules.robots_checker import check_robots
 
 
 def start_scan(url):
@@ -24,5 +25,6 @@ def start_scan(url):
             website["cookies"]
         )
         result["http_methods"] = check_http_methods(url)
+        result["robots"] = check_robots(url)
 
     return result
