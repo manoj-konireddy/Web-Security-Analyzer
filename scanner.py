@@ -5,6 +5,7 @@ from modules.cookie_analyzer import analyze_cookies
 from modules.http_methods import check_http_methods
 from modules.robots_checker import check_robots
 from modules.securitytxt_checker import check_securitytxt
+from modules.risk_engine import calculate_risk
 
 
 def start_scan(url):
@@ -28,5 +29,6 @@ def start_scan(url):
         result["http_methods"] = check_http_methods(url)
         result["robots"] = check_robots(url)
         result["securitytxt"] = check_securitytxt(url)
+        result["risk"] = calculate_risk(result)
 
     return result

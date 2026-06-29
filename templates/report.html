@@ -2,16 +2,99 @@
 
 {% block content %}
 
+<div class="{% if download %}download-mode{% endif %}">
+
 <div class="container">
+
+    {% if not download %}
 
     <div class="header">
 
         <h1>🛡️ Web Security Analyzer</h1>
 
-        <a href="/" class="new-scan-btn">New Scan</a>
+        <div class="header-buttons">
+
+            <a href="/" class="new-scan-btn">
+
+                New Scan
+
+            </a>
+
+            <a href="/download/pdf" class="download-btn">
+
+                PDF Report
+
+            </a>
+
+            <a href="/download/json" class="download-btn">
+
+                JSON Report
+
+            </a>
+
+        </div>
 
     </div>
 
+    {% else %}
+
+    <div class="report-header">
+
+        <h1>🛡️ Web Security Analyzer</h1>
+
+        <h2>Website Security Assessment Report</h2>
+
+        <hr>
+
+        <table>
+
+            <tr>
+
+                <td><strong>Target Website</strong></td>
+
+                <td>{{ result.website.url }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td><strong>Overall Score</strong></td>
+
+                <td>{{ result.risk.score }}/100</td>
+
+            </tr>
+
+            <tr>
+
+                <td><strong>Risk Level</strong></td>
+
+                <td>{{ result.risk.risk }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td><strong>Generated Date</strong></td>
+
+                <td>{{ report.generated_date }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td><strong>Generated Time</strong></td>
+
+                <td>{{ report.generated_time }}</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    {% endif %}
+
+    {% if not download %}
     <div class="target-card">
 
         <h2>Target Website</h2>
@@ -19,16 +102,27 @@
         <p>{{ result.website.url }}</p>
 
     </div>
-
+    {% endif %}
+    
+    {% if not download %}
     <div class="score-card">
 
         <h2>Overall Security Score</h2>
 
-        <h1>-- / 100</h1>
+        <h1>
 
-        <p>Calculating...</p>
+            {{ result.risk.score }} / 100
+
+        </h1>
+
+        <p>
+
+            {{ result.risk.risk }}
+
+        </p>
 
     </div>
+    {% endif %}
 
     <!-- Website Information -->
 
@@ -94,11 +188,15 @@
 
                     {% if header.present %}
 
-                    <span style="color:green;">✔ Present</span>
+                    <span class="status success">
+                        ✔ Present
+                    </span>
 
                     {% else %}
 
-                    <span style="color:red;">✖ Missing</span>
+                    <span class="status danger">
+                        ✖ Missing
+                    </span>
 
                     {% endif %}
 
@@ -259,7 +357,7 @@
 
         <h2>🌐 HTTP Methods</h2>
 
-        <table>
+        <table class="methods-table">
 
             {% for method in result.http_methods %}
 
@@ -273,23 +371,29 @@
 
                 <td>
 
-                    {% if method.supported %}
+                    <span class="status {{ 'success' if method.supported else 'danger' }}">
 
-                        <span class="status success">
+                        <span class="desktop-text">
 
-                            ✔ Supported
-
-                        </span>
-
-                    {% else %}
-
-                        <span class="status danger">
-
-                            ✖ Not Supported
+                            {% if method.supported %}
+                                ✔ Supported
+                            {% else %}
+                                ✖ Not Supported
+                            {% endif %}
 
                         </span>
 
-                    {% endif %}
+                        <span class="mobile-text">
+
+                            {% if method.supported %}
+                                ✔
+                            {% else %}
+                                ✖
+                            {% endif %}
+
+                        </span>
+
+                    </span>
 
                 </td>
 
@@ -461,9 +565,54 @@
 
         <h2>💡 Recommendations</h2>
 
-        <p>Recommendations will appear here.</p>
+        {% if result.risk.recommendations %}
+
+            <ul class="recommendation-list">
+
+                {% for item in result.risk.recommendations %}
+
+                    <li>
+
+                        {{ item }}
+
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>No recommendations. Great job!</p>
+
+        {% endif %}
 
     </div>
+
+    {% if download %}
+
+    <div class="disclaimer">
+
+        <strong>Disclaimer</strong><br><br>
+
+        This report represents the security posture observed at the time of scanning.
+        Results may change as the target website is updated.
+        This report should not be considered a complete security audit.
+
+    </div>
+
+    <div class="download-footer">
+
+        <strong>Web Security Analyzer v1.0</strong><br>
+
+        Developed by Konireddy Manoj Kumar Reddy<br>
+
+        Generated on {{ report.generated_date }} at {{ report.generated_time }}
+
+    </div>
+
+    {% endif %}
+</div>
 
 </div>
 

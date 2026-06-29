@@ -1,7 +1,48 @@
+# Virtual Environment
 venv/
+.env
+
+# Python
 __pycache__/
-*.pyc
-reports/*.html
-reports/*.json
+*.py[cod]
+*.pyo
+*.pyd
+
+# Flask
+instance/
+.webassets-cache/
+
+# VS Code
 .vscode/
+
+# PyCharm
 .idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Reports
+reports/*.pdf
+reports/*.json
+
+# Logs
+*.log
+
+# Environment Variables
+.env
+
+# Cache
+.pytest_cache/
+.mypy_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Temporary Files
+*.tmp
+*.bak

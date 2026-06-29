@@ -157,7 +157,6 @@ color:#1f2937;
 table{
 
 width:100%;
-table-layout:fixed;
 
 border-collapse:collapse;
 
@@ -179,47 +178,144 @@ width:35%;
 
 }
 
-/* Mobile version */
+/* ==========================
+   Mobile Version
+========================== */
 
 @media (max-width:768px){
 
-.container{
+    .container{
+        width:95%;
+        margin:20px auto;
+    }
 
-    width:95%;
-    margin:20px auto;
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .new-scan-btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .score-card h1{
+        font-size:40px;
+    }
+
+    .section{
+        padding:18px;
+        overflow-x:auto;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+    }
+
+    table td{
+        padding:12px 8px;
+        vertical-align:middle;
+        word-break:break-word;
+    }
+
+    table td:first-child{
+        width:60%;
+        font-weight:bold;
+    }
+
+    table td:last-child{
+        width:40%;
+        text-align:right;
+    }
+
+    .status{
+
+        display:inline-flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        white-space:nowrap;
+
+        padding:5px 10px;
+
+        border-radius:6px;
+
+        font-size:13px;
+
+        font-weight:600;
+
+    }
+
+    .desktop-text{
+
+        display:none;
+
+    }
+
+    .mobile-text{
+
+        display:inline;
+
+    }
+
+    .methods-table td:first-child {
+
+        font-size: 12px;
+        width: 20%;
+        white-space: nowrap;
+
+    }
+
+    .methods-table td:nth-child(2) {
+
+        width: 40%;
+
+    }
+
+    .methods-table td:last-child {
+
+        width: 25%;
+
+    }
+
+    .header-buttons{
+
+        width:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+    }
+
+    .download-btn,
+    .new-scan-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
 
 }
 
-.header{
+/* ==========================
+   Mobile Version End
+========================== */
 
-    flex-direction:column;
+.desktop-text{
 
-    gap:20px;
-
-}
-
-.score-card h1{
-
-    font-size:40px;
+    display:inline;
 
 }
 
-table td{
+.mobile-text{
 
-    display:block;
-    width:100%;
-    text-align:left;
-
-}
-
-table tr{
-
-    display:block;
-    margin-bottom:15px;
-
-}
-
-/* Mobile version end */
+    display:none;
 
 }
 
@@ -258,5 +354,297 @@ table tr{
     color: #dc2626;
 
     background: #fee2e2;
+
+}
+
+.recommendation-list {
+
+    margin-top: 20px;
+
+    padding-left: 25px;
+
+}
+
+.recommendation-list li {
+
+    margin-bottom: 12px;
+
+    line-height: 1.7;
+
+}
+
+table td {
+
+    word-break: break-word;
+
+    overflow-wrap: anywhere;
+
+}
+
+.methods-table td{
+
+    text-align:center;
+
+}
+
+.methods-table td:first-child {
+
+    width: 20%;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+
+}
+
+.methods-table td:nth-child(2) {
+
+    width: 40%;
+    text-align: center;
+
+}
+
+.methods-table td:last-child {
+
+    width: 25%;
+    text-align: center;
+
+}
+
+.loading {
+
+    display: none;
+
+    margin-top: 25px;
+
+    text-align: center;
+
+}
+
+.spinner {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: 0 auto 15px;
+
+    border: 5px solid #e5e7eb;
+
+    border-top: 5px solid #2563eb;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+.header-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.download-btn{
+
+    background:#16a34a;
+
+    color:white;
+
+    padding:10px 20px;
+
+    text-decoration:none;
+
+    border-radius:6px;
+
+    transition:.3s;
+
+}
+
+.download-btn:hover{
+
+    background:#15803d;
+
+}
+
+/* ==========================
+   Download Report Mode
+========================== */
+
+.report-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+    border-bottom:2px solid #2563eb;
+
+    padding-bottom:25px;
+
+}
+
+.report-header h1{
+
+    margin-bottom:10px;
+
+    color:#1f2937;
+
+}
+
+.report-header h2{
+
+    color:#2563eb;
+
+    font-weight:500;
+
+    margin-bottom:20px;
+
+}
+
+.report-header table{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin:0 auto;
+
+}
+
+.report-header td{
+
+    padding:10px;
+
+    border:none;
+
+}
+
+.report-header td:first-child{
+
+    width:35%;
+
+    text-align:left;
+
+}
+
+.report-header td:last-child{
+
+    text-align:right;
+
+    font-weight:bold;
+
+}
+
+.download-footer{
+
+    margin-top:50px;
+
+    padding-top:25px;
+
+    border-top:2px solid #ddd;
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:14px;
+
+    line-height:1.8;
+
+}
+
+.disclaimer{
+
+    margin-top:30px;
+
+    padding:18px;
+
+    background:#fff8e1;
+
+    border-left:5px solid #f59e0b;
+
+    border-radius:8px;
+
+    color:#555;
+
+}
+
+/* ==========================
+   Download Layout
+========================== */
+
+.download-mode{
+
+    background:#ffffff;
+
+}
+
+.download-mode .container{
+
+    max-width:1000px;
+
+    background:#ffffff;
+
+    box-shadow:none;
+
+    border-radius:0;
+
+}
+
+.download-mode .section{
+
+    box-shadow:none;
+
+    border-radius:0;
+
+    border:1px solid #ddd;
+
+    margin-top:35px;
+
+}
+
+.download-mode .target-card,
+.download-mode .score-card{
+
+    display:none;
+
+}
+
+.error-message{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+    border:1px solid #ef4444;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    font-weight:bold;
 
 }

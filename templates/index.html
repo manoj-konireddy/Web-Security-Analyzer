@@ -17,13 +17,36 @@
             type="url"
             name="url"
             placeholder="https://example.com"
+            value="{{ url if url else '' }}"
             required>
 
-        <button type="submit">
+        <button id="scan-btn" type="submit">
 
             Analyze Website
 
         </button>
+
+        {% if error %}
+
+        <div class="error-message">
+
+            ❌ {{ error }}
+
+        </div>
+
+        {% endif %}
+
+        <div id="loading" class="loading">
+
+            <div class="spinner"></div>
+
+            <p>
+
+                Scanning Website...
+
+            </p>
+
+        </div>
 
     </form>
 
