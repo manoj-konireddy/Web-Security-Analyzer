@@ -80,49 +80,57 @@
 
         <table>
 
-        {% for header in result.security_headers.headers %}
+            {% for header in result.security_headers.headers %}
 
-        <tr>
+            <tr>
 
-        <td>{{ header.name }}</td>
+                <td>
 
-        <td>
+                    {{ header.name }}
+                
+                </td>
 
-        {% if header.present %}
+                <td>
 
-        <span style="color:green;">✔ Present</span>
+                    {% if header.present %}
 
-        {% else %}
+                    <span style="color:green;">✔ Present</span>
 
-        <span style="color:red;">✖ Missing</span>
+                    {% else %}
 
-        {% endif %}
+                    <span style="color:red;">✖ Missing</span>
 
-        </td>
+                    {% endif %}
 
-        </tr>
+                </td>
 
-        {% endfor %}
+            </tr>
 
-        <tr>
+            {% endfor %}
 
-        <td><strong>Headers Score</strong></td>
+            <tr>
 
-        <td>
+                <td>
 
-        <strong>
+                    <strong>Headers Score</strong>
+                
+                </td>
 
-        {{ result.security_headers.score }}
+                <td>
 
-        /
+                <strong>
 
-        {{ result.security_headers.total }}
+                    {{ result.security_headers.score }}
 
-        </strong>
+                    /
 
-        </td>
+                    {{ result.security_headers.total }}
 
-        </tr>
+                </strong>
+
+                </td>
+
+            </tr>
 
         </table>
 
@@ -134,7 +142,77 @@
 
         <h2>🔒 SSL Certificate</h2>
 
-        <p>Coming Soon...</p>
+        {% if result.ssl.enabled %}
+
+        <table>
+
+            <tr>
+                <td>HTTPS Enabled</td>
+                <td>
+
+                    <span class="status success">
+                        ✔ Enabled
+                    </span>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>Certificate Valid</td>
+
+                <td>
+
+                    {% if result.ssl.valid %}
+
+                        <span class="status success">
+                            ✔ Valid
+                        </span>
+
+                    {% else %}
+
+                        <span class="status danger">
+                            ✖ Invalid
+                            </span>
+
+                    {% endif %}
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>Issued To</td>
+                <td>{{ result.ssl.issued_to }}</td>
+            </tr>
+
+            <tr>
+                <td>Issuer</td>
+                <td>{{ result.ssl.issuer }}</td>
+            </tr>
+
+            <tr>
+                <td>Valid From</td>
+                <td>{{ result.ssl.valid_from }}</td>
+            </tr>
+
+            <tr>
+                <td>Valid Until</td>
+                <td>{{ result.ssl.valid_until }}</td>
+            </tr>
+
+            <tr>
+                <td>Days Remaining</td>
+                <td>
+                    {{ result.ssl.days_remaining }} Days
+                </td>
+            </tr>
+
+        </table>
+
+        {% else %}
+
+        <p>SSL information unavailable.</p>
+
+        {% endif %}
 
     </div>
 
