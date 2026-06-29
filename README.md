@@ -2,7 +2,7 @@
 
 ![Application Home Page](screenshots/home-page.png)
 
-A lightweight web security assessment tool built with Python and Flask that analyzes websites for common security misconfigurations, insecure HTTP headers, SSL/TLS configuration, cookie security, and HTTP methods.
+A lightweight web security tool built with Python and Flask that analyzes websites for common security misconfigurations, insecure HTTP headers, SSL/TLS configuration, cookie security, and HTTP methods.
 
 The application generates a security risk score and exports professional PDF and JSON security reports. It is deployed on AWS using EC2, Nginx, Gunicorn, and CloudFront with HTTPS.
 
