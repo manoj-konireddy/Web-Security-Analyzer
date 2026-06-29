@@ -259,7 +259,51 @@
 
         <h2>🌐 HTTP Methods</h2>
 
-        <p>Coming Soon...</p>
+        <table>
+
+            {% for method in result.http_methods %}
+
+            <tr>
+
+                <td>
+
+                    {{ method.method }}
+
+                </td>
+
+                <td>
+
+                    {% if method.supported %}
+
+                        <span class="status success">
+
+                            ✔ Supported
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="status danger">
+
+                            ✖ Not Supported
+
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    {{ method.status }}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
 
     </div>
 
