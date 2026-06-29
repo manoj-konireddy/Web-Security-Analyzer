@@ -373,7 +373,85 @@
 
         <h2>📄 security.txt</h2>
 
-        <p>Coming Soon...</p>
+        <table>
+
+            <tr>
+
+                <td>security.txt Found</td>
+
+                <td>
+
+                    {% if result.securitytxt.found %}
+
+                        <span class="status success">
+
+                            ✔ Found
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="status danger">
+
+                            ✖ Not Found
+
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Location</td>
+
+                <td>{{ result.securitytxt.url }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Status Code</td>
+
+                <td>{{ result.securitytxt.status_code }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Security Contact</td>
+
+                <td>{{ result.securitytxt.contact }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Encryption Key</td>
+
+                <td>{{ result.securitytxt.encryption }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Preferred Languages</td>
+
+                <td>{{ result.securitytxt.preferred_languages }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Expires</td>
+
+                <td>{{ result.securitytxt.expires }}</td>
+
+            </tr>
+
+        </table>
 
     </div>
 
