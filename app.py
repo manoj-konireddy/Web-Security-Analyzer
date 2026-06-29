@@ -1,31 +1,32 @@
-from utils.banner import print_banner
+from flask import Flask, render_template, request
 
+import config
 from scanner import start_scan
 
+app = Flask(__name__)
 
-def main():
 
-    print_banner()
+@app.route("/", methods=["GET", "POST"])
+def home():
 
-    url = input("\nEnter Website URL: ").strip()
+    if request.method == "POST":
 
-    if not url.startswith(("http://", "https://")):
+        url = request.form.get("url")
 
-        print("Invalid URL")
+        result = start_scan(url)
 
-        return
+        return render_template(
+            "report.html",
+            result=result
+        )
 
-    scan = start_scan(url)
-
-    print("\nScan Completed Successfully\n")
-
-    print(scan.website)
-
-    print()
-
-    print(scan.headers)
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
 
-    main()
+    app.run(
+        debug=config.DEBUG,
+        host=config.HOST,
+        port=config.PORT
+    )

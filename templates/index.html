@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Web Security Analyzer</h1>
+
+    <p>
+        Analyze your website security configuration and
+        generate a professional security report.
+    </p>
+
+    <form method="POST">
+
+        <input
+            type="url"
+            name="url"
+            placeholder="https://example.com"
+            required>
+
+        <button type="submit">
+
+            Analyze Website
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

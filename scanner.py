@@ -1,22 +1,19 @@
-from models.scan_result import ScanResult
-
 from modules.website_info import get_website_info
-from modules.security_headers import analyze_security_headers
+from modules.security_headers import check_security_headers
+
 
 def start_scan(url):
 
-    scan = ScanResult()
+    result = {}
 
-    scan.website = get_website_info(url)
+    website = get_website_info(url)
 
-    if not scan.website["reachable"]:
+    result["website"] = website
 
-        print("Unable to connect.")
+    if website["reachable"]:
 
-        return
+        result["security_headers"] = check_security_headers(
+            website["headers"]
+        )
 
-    scan.headers = analyze_security_headers(
-        scan.website["headers"]
-    )
-
-    return scan
+    return result
