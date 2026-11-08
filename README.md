@@ -8,12 +8,6 @@ The application generates a security risk score and exports professional PDF and
 
 ---
 
-# 🌐 Live Demo
-
-### 🔗 https://d1jbr2kt5i8apn.cloudfront.net
-
----
-
 # 🎯 Objective
 
 The objective of this project is to perform automated reconnaissance and security assessment of publicly accessible websites by analyzing their security posture and identifying potential weaknesses.
@@ -303,7 +297,7 @@ https://linkedin.com/in/manoj-konireddy
 
 Portfolio
 
-https://manoj-konireddy.github.io/portfolio
+https://manoj-konireddy.github.io/portfolio/
 
 ---
 
